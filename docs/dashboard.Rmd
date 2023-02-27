@@ -1,0 +1,33 @@
+---
+title: "Desamigos Fantasy"
+output:
+  flexdashboard::flex_dashboard:
+    orientation: row
+    vertical_layout: fill
+runtime: shiny
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(shiny)
+library(flexdashboard)
+```
+
+Column {.sidebar}
+-----------------------------------------------------------------------
+```{r}
+numericInput(
+    "n",
+    "Numero",
+    value = 10
+)
+```
+
+Column
+-----------------------------------------------------------------------
+
+### Tabela
+
+```{r}
+renderTable({head(mtcars, input$n)})
+```
